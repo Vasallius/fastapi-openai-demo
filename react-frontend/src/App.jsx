@@ -20,7 +20,7 @@ function App() {
     }
 
     const sse = new EventSource(
-      `http://127.0.0.1:8000/stream?country=${country}&season=${season}`,
+      `http://127.0.0.1:80/stream?country=${country}&season=${season}`,
       {
         withCredentials: true,
       }
