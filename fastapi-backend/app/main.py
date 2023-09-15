@@ -1,15 +1,14 @@
 import credentials
 import openai
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 
-app = FastAPI()
-
+# make sure you have credentials.py with api_key
 openai.api_key = credentials.api_key
 
 app = FastAPI()
-# Replace with the actual origin of your React app
+
 origins = ["http://localhost:5173"]
 
 app.add_middleware(
@@ -42,4 +41,4 @@ def get_openai_generator(prompt: str):
 
 @app.get('/stream')
 async def stream(country: str, season: str):
-    return StreamingResponse(get_openai_generator(f"Give me three recommendations of things to di in {country} during {season}"), media_type='text/event-stream')
+    return StreamingResponse(get_openai_generator(f"Give me three recommendations of things to do in {country} during {season}"), media_type='text/event-stream')
