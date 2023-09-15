@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-const seasons = ["winter", "spring", "summer", "fall"]; // Available season options
+
+const seasons = ["winter", "spring", "summer", "fall"];
 
 function App() {
   const [data, setData] = useState("");
@@ -26,15 +27,11 @@ function App() {
     );
 
     sse.onmessage = (event) => {
-      // console.log(event);
       if (isStringDigit(event.data)) {
-        console.log(data.charAt(data.length - 1));
-        console.log(event.data);
         let text = "<br/>" + event.data;
-        console.log(text);
-        setData((prevData) => prevData + text); // Access the data using event.data
+        setData((prevData) => prevData + text);
       } else {
-        setData((prevData) => prevData + event.data); // Access the data using event.data
+        setData((prevData) => prevData + event.data);
       }
     };
 
