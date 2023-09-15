@@ -1,3 +1,4 @@
+import credentials
 import openai
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -5,7 +6,7 @@ from fastapi.responses import StreamingResponse
 
 app = FastAPI()
 
-openai.api_key = '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'
+openai.api_key = credentials.api_key
 
 app = FastAPI()
 # Replace with the actual origin of your React app
